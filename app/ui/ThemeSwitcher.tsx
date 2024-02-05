@@ -1,10 +1,31 @@
 "use client";
 
-import { useDark } from "../../hooks/useDark";
+import { useState } from "react";
 
 export default function ThemeSwitcher() {
-   const [isDark, setDark]: any = useDark();
-
+   const [dark, setDark]: [
+      dark: "system" | "light" | "dark",
+      setDark: any
+   ] = useState("system");
+   if (typeof window !== "undefined") {
+      if (dark === "system") {
+         if (
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+               window.matchMedia("(prefers-color-scheme: dark)")
+                  .matches)
+         ) {
+            document.documentElement.classList.add("dark");
+         } else {
+            document.documentElement.classList.remove("dark");
+         }
+      } else if (dark === "dark") {
+         document.documentElement.classList.add("dark");
+      } else if (dark === "light") {
+         document.documentElement.classList.remove("dark");
+      }
+      localStorage.setItem("theme", dark);
+   }
    const handleChange = (e: any): void => {
       //@ts-ignore
       setDark(e.target.value);
