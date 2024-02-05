@@ -1,10 +1,6 @@
 import { ReactNode } from "react";
-import ThemeSwitcher from "./ui/ThemeSwitcher";
+import Header from "./ui/Header";
 
 export default function Home(): ReactNode {
-   return (
-      <div className="flex items-center justify-center min-h-screen bg-white dark:bg-black">
-         <ThemeSwitcher />
-      </div>
-   );
+   return <Header />;
 }
