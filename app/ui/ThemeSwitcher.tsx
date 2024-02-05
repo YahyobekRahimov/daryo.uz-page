@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDark } from "../hooks/useDark";
 
 export default function ThemeSwitcher() {
-   const { isDark, setDark }: any = useDark();
+   const [isDark, setDark]: any = useDark();
 
    const handleChange = (e: any): void => {
       //@ts-ignore
