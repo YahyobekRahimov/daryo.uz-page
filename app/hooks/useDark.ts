@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useDark = (): {
-   isDark: "light" | "dark" | "system";
-   setDark: any;
-} | void => {
+export const useDark = (): any => {
    const [dark, setDark]: [
       dark: "system" | "light" | "dark",
       setDark: any
@@ -26,6 +23,6 @@ export const useDark = (): {
          document.documentElement.classList.remove("dark");
       }
       localStorage.setItem("theme", dark);
-      return { isDark: dark, setDark };
+      return [dark, setDark];
    }
 };
