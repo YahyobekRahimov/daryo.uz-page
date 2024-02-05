@@ -4,12 +4,11 @@ export const useDark = (): {
    isDark: "light" | "dark" | "system";
    setDark: any;
 } | void => {
+   const [dark, setDark]: [
+      dark: "system" | "light" | "dark",
+      setDark: any
+   ] = useState("system");
    if (typeof window !== "undefined") {
-      const [dark, setDark]: [
-         dark: "system" | "light" | "dark",
-         setDark: any
-      ] = useState("system");
-
       if (dark === "system") {
          if (
             localStorage.theme === "dark" ||
